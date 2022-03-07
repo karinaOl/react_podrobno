@@ -3,9 +3,9 @@ import './App.css';
 import {Accordion} from "./components/Accordion/Accordion";
 import {Rating, RatingValueType} from './components/Rating/Rating';
 import {OnOff} from "./components/OnOff/OnOff";
-import {UnControlledAccordion} from "./components/Accordion/UnControlledAccordion";
-import {UnControlledRating} from "./components/Rating/UncontrolledRating";
-import {ControlledOnOff} from "./components/OnOff/ControledOnOff";
+import {UncontrolledAccordion} from "./components/Accordion/UncontrolledAccordion";
+import {UncontrolledRating} from "./components/Rating/UncontrolledRating";
+import {ControlledOnOff} from "./components/OnOff/ControlledOnOff";
 
 type AppProps = {
     title: string
@@ -21,7 +21,7 @@ function App() {
         <div className="App">
             Article 1
             <AppTitle title={'This is'}/>
-            <UnControlledAccordion titleValue={'Menu'}/>
+            <UncontrolledAccordion titleValue={'Menu'}/>
             <AppTitle title={'Users'}/>
             {/*<UnControlledAccordion titleValue={'Users'}/>*/}
             <Accordion titleValue={'Menu'} collapsed={collapsedAccordion} setCollapsedAccordion={setCollapsedAccordion}/>

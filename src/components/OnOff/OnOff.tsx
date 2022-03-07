@@ -1,14 +1,11 @@
-import {useState} from "react";
+import React, {useState} from "react";
 
-type OnOffType = {
-    //on: boolean
+export type OnOffPropsType = {
     setSwitchOn:(on: boolean)=>void
 }
 
-export const OnOff = (props: OnOffType) => {
-
-
-    let[on, setOn] = useState(false)
+export const OnOff = (props: OnOffPropsType) => {
+    let[on, setOn] = useState<boolean>(false)
 
     const onStyle = {
         border: '1px solid black',
@@ -48,7 +45,7 @@ export const OnOff = (props: OnOffType) => {
         <div className={'all'}>
             <div style={onStyle} onClick={onClicked}>on</div>
             <div style={offStyle} onClick={offClicked}> off</div>
-            <div style={circle}></div>
+            <div style={circle}/>
         </div>
     )
 }

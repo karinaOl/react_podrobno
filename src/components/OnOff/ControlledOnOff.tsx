@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-type ControlledOnOffType = {
+export type ControlledOnOffType = {
     isOn: boolean
     setSwitchOn: (switchOn:boolean) => void
 }

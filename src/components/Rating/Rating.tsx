@@ -2,7 +2,7 @@ import React from "react";
 
 export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5
 
-type RatingProps = {
+export type RatingProps = {
     value: RatingValueType
     setRatingValue: (value: RatingValueType)=>void
 }
