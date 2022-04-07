@@ -16,6 +16,9 @@ function App() {
     let[ratingValue, setRatingValue] = useState<RatingValueType>(3)
     let[collapsedAccordion, setCollapsedAccordion] = useState(false)
     let[switchOn, setSwitchOn] = useState(false)
+    
+    const onClick = (value:any) => {}
+    let items = [{title: "Karina", value: 1},{title: "Leha", value: 2},{title: "Vika", value: 3},{title: "Katya", value: 4}];
 
     return (
         <div className="App">
@@ -24,7 +27,13 @@ function App() {
             <UncontrolledAccordion titleValue={'Menu'}/>
             <AppTitle title={'Users'}/>
             {/*<UnControlledAccordion titleValue={'Users'}/>*/}
-            <Accordion titleValue={'Menu'} collapsed={collapsedAccordion} setCollapsedAccordion={setCollapsedAccordion}/>
+            <Accordion
+                titleValue={'Menu'}
+                collapsed={collapsedAccordion}
+                setCollapsedAccordion={setCollapsedAccordion}
+                onClick={onClick}
+                items={items}
+            />
            {/* <Accordion titleValue={'Users'} collapsed={false}/>*/}
             Article 2
             <Rating value={ratingValue} setRatingValue={setRatingValue}/>

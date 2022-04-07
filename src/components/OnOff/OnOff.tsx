@@ -2,10 +2,11 @@ import React, {useState} from "react";
 
 export type OnOffPropsType = {
     setSwitchOn:(on: boolean)=>void
+    defaultValue?: boolean
 }
 
 export const OnOff = (props: OnOffPropsType) => {
-    let[on, setOn] = useState<boolean>(false)
+    let[on, setOn] = useState<boolean>(props.defaultValue ? props.defaultValue : false)
 
     const onStyle = {
         border: '1px solid black',
