@@ -8,3 +8,13 @@ export default {
 
 
 export const Template: Story<ClockType> = (args) => <Clock {...args}/>
+
+export const AnalogClock = Template.bind({})
+AnalogClock.args = {
+    mode: "analog"
+}
+
+export const DigitalClock = Template.bind({})
+DigitalClock.args = {
+    mode: "digital"
+}
