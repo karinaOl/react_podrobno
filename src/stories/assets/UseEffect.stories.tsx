@@ -11,7 +11,7 @@ export const SimpleExample: Story = () => {
 
     console.log("SimpleExample")
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log("useEffect every render")
         document.title = counter.toString()
     });
@@ -26,10 +26,10 @@ export const SimpleExample: Story = () => {
         document.title = counter.toString()
     }, [counter])*/
 
-  return<>
-      Hello, {counter}
-      <button onClick={()=>setCounter(counter+1)}>+</button>
-  </>
+    return <>
+        Hello, {counter}
+        <button onClick={() => setCounter(counter + 1)}>+</button>
+    </>
 }
 
 export const SetTimeoutExample: Story = () => {
@@ -38,23 +38,98 @@ export const SetTimeoutExample: Story = () => {
 
     console.log("SetTimeoutExample")
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log("setTimeout")
-        setTimeout(()=>{
+        setTimeout(() => {
             document.title = counter.toString()
         }, 1000)
     }, [counter]);
 
-  /*  useEffect(()=>{
-        console.log("setInterval")
-        setInterval(()=>{
-            setCounter((state)=>state + 1);
-        })
-    }, []);*/
+      /*useEffect(()=>{
+          console.log("setInterval")
+          const interval = setInterval(()=>{
+              setCounter((state)=>state + 1);
+          })
+          return () => {
+              clearInterval(interval)
+          }
+      }, []);*/
 
 
-  return<>
-      Hello, {counter}
-      <button onClick={()=>setCounter(counter+1)}>+</button>
-  </>
+    return <>
+        Hello, {counter}
+        <button onClick={() => setCounter(counter + 1)}>+</button>
+    </>
+}
+
+export const ResetEffectExample: Story = () => {
+
+    const [counter, setCounter] = useState(1);
+
+    console.log("ResetEffectExample")
+
+    useEffect(() => {
+        console.log("useEffect done: " + counter)
+        return () => {
+            console.log("Reset effect: " + counter)
+        }
+    }, [counter]);
+
+
+    return <>
+        Hello, {counter}
+        <button onClick={() => setCounter(counter + 1)}>+</button>
+    </>
+}
+
+export const KeysTrackerExample: Story = () => {
+
+    const [text, setText] = useState("");
+
+    console.log("KeysTrackerExample: " + text)
+
+    useEffect(() => {
+        console.log("useEffect done")
+
+        const handler = (e: KeyboardEvent) => {
+            console.log(e.key)
+            setText(text + e.key)
+        }
+
+        window.addEventListener("keypress", handler)
+        return () => {
+            console.log("Reset effect: " + text)
+            window.removeEventListener("keypress", handler)
+        }
+    }, [text]);
+
+
+    return <>
+        Text, {text}
+    </>
+}
+
+export const SetTimeoutExample2: Story = () => {
+
+    const [text, setText] = useState("");
+
+    console.log("SetTimeoutExample2: " + text)
+
+    useEffect(() => {
+        console.log("useEffect done")
+
+        const timeoutID = setTimeout(()=> {
+            setText("3 seconds passed")
+        }, 3000)
+
+        return () => {
+            clearInterval(timeoutID)
+        }
+
+    }, [text]);
+
+
+    return <>
+        Text, {text}
+    </>
 }
